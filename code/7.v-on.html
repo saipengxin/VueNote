@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 使用小括号，在括号内传递参数 -->
+        <button @click="buy(5,3)">买水减5元,并加3积分</button>
+        <button @click="buy(10,5)">买可乐减10元,并加5积分</button>
+        <p>余额：{{money}},积分：{{count}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            money:100,
+            count:0,
+        },
+        methods:{
+            // 定义接受参数的变量 price,num
+            buy(price,num) {
+                this.money -= price
+                this.count += num
+            }
+        }
+    })
+</script>
+</html>

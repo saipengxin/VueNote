@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 插值表达式会将内容解析成纯文本，不会渲染html标签 -->
+        <div>{{msg}}</div>
+        <!-- v-html指令会解析表达式中的html标签并渲染 -->
+        <div v-html="msg"></div>
+
+        <!-- 错误的，v-html的值是一个表达式，不能直接写一个字符串上去，控制台会报错 -->
+        <!-- <div v-html="<h1>大标题</h1>"></div> -->
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            msg:"<h1>大标题</h1>"
+        }
+    })
+</script>
+</html>

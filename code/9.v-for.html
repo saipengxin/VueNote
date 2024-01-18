@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <!-- 在v-for循环的时候，给每一个li绑定一个key属性 -->
+            <li v-for="(item,index) in bookList" :key="item.id">
+                <span>{{item.name}}</span>
+                <span>{{item.author}}</span>
+                <button @click="del(item.id)">删除</button>
+            </li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            bookList:[
+                {id:1,name:"《红楼梦》",author:"曹雪芹"},    
+                {id:2,name:"《西游记》",author:"吴承恩"},    
+                {id:3,name:"《水浒传》",author:"施耐庵"},    
+                {id:4,name:"《三国演义》",author:"罗贯中"}    
+            ]
+        },
+        methods: {
+            // 通过id删除对应的数据
+            del(id) {
+                // filter 不会改变原数组，而是产生新数组，所以这里我们过滤完数据后要给原数组赋值
+                this.bookList = this.bookList.filter(item => item.id !== id)
+            }
+        },
+    })
+</script>
+</html>

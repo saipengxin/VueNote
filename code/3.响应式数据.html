@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{msg}}</p>
+        <p>{{count}}</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        // 我们在data中定义的数据最终都会被添加到我们创建的实例上
+        data:{
+            msg:"hello",
+            count:10
+        }
+    })
+    // 访问数据 实例名.属性名
+    console.log(app.msg);
+
+    // 修改数据 实例名.属性名 = ‘值’ ，修改完成后，Vue会自动帮我们的页面进行数据渲染，我们不需要手动进行DOM操作
+    app.msg = "world"
+</script>
+</html>

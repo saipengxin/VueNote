@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div><input type="text" v-model="task"><button @click="add">添加</button></div>
+        <div>
+            <ul>
+                <!-- 便利数据，展示列表 -->
+                <li v-for="(item,index) in list">
+                    <span>{{index+1}}</span>
+                    <span>{{item.desc}}</span>
+                    <button @click="del(item.id)">x</button>
+                </li>
+            </ul>
+        </div>
+        <!-- 控制如果列表没有数据，不展示下面的内容 -->
+        <div v-show="list.length > 0">
+            <span>合计:{{list.length}}</span>
+            <button @click="clear">清空任务</button>
+        </div>
+    </div>
+    
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            // 存储内容列表
+            list:[],
+            // 输入的内容
+            task:""
+        },
+        methods: {
+            add() {
+                // 新增的时候校验一下是不是为空
+                if (this.task.trim() == ""){
+                    alert("请输入内容")
+                    return
+                }
+                // id我们用时间戳来设置，保证唯一
+                item = {id:+new Date(),desc:this.task}
+                // unshift 向数组最前面添加元素
+                this.list.unshift(item)
+                // 输入框设置为空，双向绑定，内容为空后，输入框内容自动设置为空
+                this.task = ''
+            },
+            del(id){
+                // filter 过滤器修改数组数组，filter不会修改原数组，所以要重新赋值
+                this.list = this.list.filter(item => item.id !== id)
+            },
+            clear(){
+                // 内容设置为空，列表会自动同步
+                this.list = []
+            }
+        },
+    })
+</script>
+</html>

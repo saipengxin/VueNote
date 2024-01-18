@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p>{{nickname}}</p>
+        <p>{{nickname.toUpperCase()}}</p>
+        <p>{{age > 18 ? '成年' : '未成年'}}</p>
+        <p>{{friend.name}}</p>
+        <p>{{friend.desc}}</p>
+
+        <!-- 一下都是不合法的语法 -->
+        <!-- 参数未定义，不能使用，页面不会渲染，控制台会报错：Property or method "hobby" is not defined -->
+        <p>{{hobby}}</p>
+        <!-- 插值表达式中只能使用表达式，不能写语句，整个页面都会崩溃，控制台会报错：avoid using JavaScript keyword as property name: "if" -->
+        <p>{{if}}</p>
+        <!-- 属性中不能使用插值表达式，即使这个参数我们已经定义，也不能在属性中使用，渲染不会生效，页面会报错：title="{{nickname}}": Interpolation inside attributes has been removed -->
+        <p title="{{nickname}}">我们p标签</p>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const App = new Vue({
+        el:"#app",
+        data:{
+            nickname:"saipx",
+            age:18,
+            friend:{
+                name:"hh",
+                desc:"爱好：吃"
+            }
+        }
+    })
+</script>
+</html>

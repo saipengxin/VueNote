@@ -1,0 +1,44 @@
+{
+    "moanDuration": {
+        "name": "娇喘检测",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "anthenDuration": {
+        "name": "中国国歌检测",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "banedaudioDuration": {
+        "name": "中国违禁歌曲检测",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "audioPoliticalDuration": {
+        "name": "中国领导人声纹检测",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "minorDuration": {
+        "name": "声纹未成年人检测",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "illegalDuration": {
+        "name": "涉政&违禁&暴恐&色情&辱骂&广告",
+        "price": 0.54,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    },
+    "languageDuration": {
+        "name": "语种",
+        "price": 0.18,
+        "priceUnit": "元/小时",
+        "discount": 0.25
+    }
+}

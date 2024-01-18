@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div><span>账号：</span><input type="text" v-model="username"></div>
+        <div><span>密码：</span><input type="password" v-model="password"></div>
+        <div>
+            <button @click="login">登陆</button>
+            <button @click="reset">重制</button>
+        </div>
+
+        <input type="text" v-model.number = "username">
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            username:"",
+            password:""
+        },
+        methods: {
+            login() {
+                // 双向绑定的数据，视图(输入框)更新之后，数据也会更新，我们直接获取使用就可以了，不需要手动获取
+                console.log(this.username,this.password)
+            },
+            reset() {
+                // 双向绑定的数据，更新数据之后，视图(输入框)也会自动更新，不需要我们手动进行DOM操作
+                this.username = ''
+                this.password = ''
+            }
+        },
+    })
+</script>
+</html>

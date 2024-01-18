@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 不会生效，msg不会渲染，因为我们的Vue组件指定了管理的是id为app的盒子 -->
+    <div id="app1">{{msg}}</div>
+    <!-- 准备容器 -->
+    <div id="app">
+        <!-- 这里面可以编写一些渲染的代码逻辑 -->
+        <p>{{msg}}</p>
+        <p>{{count}}</p>
+    </div>
+</body>
+<!-- 引入Vue -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+<script>
+    // 创建Vue实例
+    const App = new Vue({
+        // 通过el参数配置选择器，指定管理那个盒子，一个页面肯定会有多个盒子组成，el就是用来指定我们要管理的盒子
+        el:"#app",
+        // 通过data提供渲染的数据
+        data:{
+            msg:"hello world",
+            count:666,
+        }
+    })
+</script>
+</html>
