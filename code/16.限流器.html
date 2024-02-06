@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <div>
+        <span>手机号</span>
+<!--        绑定一个参数 -->
+        <input type="text" v-model="tel">
+    </div>
+</div>
+</body>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data: {
+            // 手机号
+           tel:"",
+            // 定时器ID
+           timerNumber:""
+        },
+        watch: {
+            // 监听tel属性，如果属性值发生变化，这个方法就会被执行
+            tel(newValue) {
+                // 清除前一个定时器，作用是如果tel属性300毫秒内发生了多次变化，我们每次都要先将前一个定时器给删除不再执行，
+                // 保证只有一个定时器存在并被执行
+                clearTimeout(this.timerNumber)
+                // 创建一个定时器，300毫秒后执行一个业务逻辑，并保存定时器ID
+                this.timerNumber = setTimeout(()=>{
+                    console.log("请求后端接口：",newValue)
+                },300)
+            }
+        }
+    })
+</script>
+</html>

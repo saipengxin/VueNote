@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+<div id="app">
+<!--    两个时间选择框，一个绑定开始时间，一个绑定结束时间-->
+    <input type="date" v-model="date.startTime">
+    <input type="date" v-model="date.endTime">
+</div>
+</body>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data: {
+            // 我们有一个日期对象，对象中有一个开始时间和结束时间
+            date:{
+                startTime:"",
+                endTime:""
+            }
+        },
+        watch: {
+            // 监听器的完整写法要是一个对象，我们监听的是date属性对象
+            date:{
+                //深度监听，date对象中有一个值发生了改变，就会触发监听器中的处理函数
+                deep:true,
+                // 页面初始化立刻执行一次handler方法
+                immediate:true,
+                // handler为监听器中的处理方法
+                // newValue传递进来的是date对象修改后的每个属性的值
+                handler(newValue) {
+                    console.log(newValue)
+                }
+            }
+        }
+    })
+</script>
+</html>
