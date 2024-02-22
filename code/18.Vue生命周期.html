@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="count--"> - </button>
+        <span>{{count}}</span>
+        <button @click="count++"> + </button>
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            count:100
+        },
+        beforeCreate() {
+            // 这时候数据还不是响应式的，我们不能用这种方式来获取数据
+            console.log("创建阶段之前",this.count)
+        },
+        created() {
+            // 创建阶段之后，Vue已经将数据设置为响应式，我们可以用这种方式来获取数据
+            console.log("创建阶段之后",this.count)
+        },
+        beforeMount() {
+            // 挂载阶段之前，页面还没有渲染，获取的document结构是没渲染之前的结构
+            console.log("挂载阶段之前",document.querySelector("span"))
+        },
+        mounted() {
+            // 挂载阶段之后，页面数据已经渲染完成，这个时候我们才可以操作dom结构
+            console.log("挂载阶段之后",document.querySelector("span"))
+        },
+        beforeUpdate() {
+            // 更新阶段指的是dom的更新，当我们点击加号或者减号，数据是立即更新的，但是dom操作有前后更新顺序
+            // beforeUpdate 指的是dom更新之前的执行的操作
+            console.log("更新阶段之前",document.querySelector("span").innerHTML)
+        },
+        updated() {
+            // updated 指的是dom更新之后执行的操作
+            console.log("更新阶段之后",document.querySelector("span").innerHTML)
+        },
+        beforeDestroy() {
+            console.log("销毁阶段之前")
+        },
+        destroyed() {
+            console.log("销毁阶段之后")
+        }
+    })
+    // 2秒之后执行销毁组件的方法
+    setTimeout(function () {
+        app.$destroy()
+    },2000)
+</script>
+</html>

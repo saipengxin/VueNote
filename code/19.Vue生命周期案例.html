@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.16/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text">
+    </div>
+</body>
+<script>
+    const app = new Vue({
+        el:"#app",
+        data:{
+            list:[]
+        },
+        // 获取后端数据最早就是在创建阶段之后，只有Vue将数据处理为响应式之后我们才能对他赋值
+        async created() {
+            const res = await axios.get("获取数据的后端地址")
+            this.list = res
+        },
+        mounted() {
+            // 挂载阶段之后，也就是页面渲染完成之后，才能操作dom
+            document.querySelector("input").focus()
+        }
+    })
+</script>
+</html>
